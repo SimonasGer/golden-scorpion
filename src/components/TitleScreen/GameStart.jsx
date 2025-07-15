@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"
+import { Login } from "./auth/Login"
 export const GameStart = () => {
     return (
         <div className="game-start">
             <h1>Welcome to Golden Scorpion!</h1>
             <p>Get ready to embark on an exciting adventure.</p>
-            <Link to="/game" className="start-button">Start Game</Link>
+            <Login/>
         </div>
     )
 }

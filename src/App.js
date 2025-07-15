@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { GameStart } from "./components/GameStart";
-import { MainMenu } from "./components/MainMenu";
+import { GameStart } from "./components/TitleScreen/GameStart";
+import { MainMenu } from "./components/Game/MainMenu";
 function App() {
   return (
     <div className="App">
