@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { Logout } from "../TitleScreen/auth/Logout"
 export const Header = () => {
     return (
         <header className="game-header">
@@ -6,7 +7,7 @@ export const Header = () => {
             <nav>
                 <Link to="/game">Main Menu</Link>
                 <Link to="/profile">Profile</Link>
-                <Link to="/">Logout</Link>
+                <Logout/>
             </nav>
         </header>
     )
