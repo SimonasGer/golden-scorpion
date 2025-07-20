@@ -25,7 +25,7 @@ export const Login = () => {
             email: formData.email,
             password: formData.password,
         })
-        localStorage.setItem("token", res.data.token)
+        localStorage.setItem("token", res.data.data.token)
         navigate("/game")
         } catch (err) {
         console.error(err)
