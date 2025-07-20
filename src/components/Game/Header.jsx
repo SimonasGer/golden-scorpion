@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { Logout } from "../TitleScreen/auth/Logout"
+
 export const Header = () => {
     return (
         <header className="game-header">
