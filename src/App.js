@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { GameStart } from "./components/TitleScreen/GameStart";
 import { MainMenu } from "./components/Game/MainMenu";
 import { Login } from "./components/TitleScreen/auth/Login";
