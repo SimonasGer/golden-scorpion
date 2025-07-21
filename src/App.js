@@ -6,6 +6,7 @@ import { Login } from "./components/TitleScreen/auth/Login";
 import { Register } from "./components/TitleScreen/auth/Register";
 import { HireMercs } from "./components/Game/hire/HireMercs";
 import { OwnedMercs } from "./components/Game/owned/OwnedMercs";
+import { GeneratedMissions } from "./components/Game/missions/GeneratedMissions";
 
 const isTokenValid = (token) => {
   try {
@@ -69,23 +70,31 @@ function App() {
               <MainMenu />
             </ProtectedRoute>
           }
-        />
-        <Route
-          path="/hire"
-          element={
-            <ProtectedRoute>
-              <HireMercs />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/owned"
-          element={
-            <ProtectedRoute>
-              <OwnedMercs />
-            </ProtectedRoute>
-          }
-        />
+          />
+          <Route
+            path="/mercs/hire"
+            element={
+              <ProtectedRoute>
+                <HireMercs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/mercs/owned"
+            element={
+              <ProtectedRoute>
+                <OwnedMercs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/missions/generated"
+            element={
+              <ProtectedRoute>
+                <GeneratedMissions />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </div>
