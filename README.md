@@ -1,11 +1,13 @@
 ## Golden Scorpion ##
 
+## Frontend repository: https://github.com/SimonasGer/golden-scorpion
+## Backend repository: https://github.com/SimonasGer/golden-backend
+## Game Link: tba
+
 Golden Scorpion is a text-based mercenary management simulator built with the MERN stack. Players hire procedurally generated mercenaries, send them on missions with stat-based outcomes, and manage resources through a risk-reward gameplay loop. The game focuses on backend-first design and systems-driven mechanics.
 
 ## Version: v0.1 (MVP) ##
 This is the first fully playable version. While the frontend is minimal and unstyled, the core gameplay loop is fully functional via manual URL navigation and console output.
-
-## Features ##
 
 ## Backend
 
