@@ -7,6 +7,8 @@ import { Register } from "./components/TitleScreen/auth/Register";
 import { HireMercs } from "./components/Game/hire/HireMercs";
 import { OwnedMercs } from "./components/Game/owned/OwnedMercs";
 import { GeneratedMissions } from "./components/Game/missions/GeneratedMissions";
+import { AcceptedMissions } from "./components/Game/missions/AcceptedMissions";
+import { MissionPage } from "./components/Game/missions/MissionPage";
 
 const isTokenValid = (token) => {
   try {
@@ -94,6 +96,26 @@ function App() {
                 <GeneratedMissions />
               </ProtectedRoute>
             }
+          />
+          <Route
+            path="/missions/accepted"
+            element={
+              <ProtectedRoute>
+                <AcceptedMissions />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/missions/:id"
+            element={
+              <ProtectedRoute>
+                <MissionPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="*"
+            element={<Navigate to="/" />}
           />
         </Routes>
       </Router>
