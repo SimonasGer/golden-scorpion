@@ -21,7 +21,7 @@ export const MercCardOwned = (props) => {
     }
 
     return (
-        <div className="merc-card">
+        <div className={`merc-card injury-${props.injuryStatus}`}>
             <h3 className="merc-title">{props.firstName} {props.lastName}</h3>
             <div className="merc-stats">
                 <p>Strength: {props.stats.strength}</p>

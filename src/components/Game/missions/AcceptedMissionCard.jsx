@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
+import "./mission.scss"
 
 export const AcceptedMissionCard = (props) => {
     return (
-        <div className="mission-card">
+        <div className="merc-card">
             <h3 className="merc-name">{props.name}</h3>
             <div className="merc-stats">
                 <p>Strength: {props.stats.strength}</p>
@@ -11,7 +12,9 @@ export const AcceptedMissionCard = (props) => {
             </div>
             <p>Reward: {props.reward}</p>
             <p className="merc-description">Description: {props.description}</p>
-            <Link className="action-button" to={`/missions/${props.id}`}>Expand</Link>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <Link className="action-link" to={`/missions/${props.id}`}>Expand</Link>
+            </div>
         </div>
     )
 }

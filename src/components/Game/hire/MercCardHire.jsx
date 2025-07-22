@@ -16,6 +16,7 @@ export const MercCardHire = (props) => {
                 }
             }
         )
+            props.deductGold(props.price);
         console.log("Merc hired:", res.data.data.merc)
         } catch (err) {
             console.error("Failed to hire merc:", err)

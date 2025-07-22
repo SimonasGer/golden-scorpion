@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Header } from "../Header";
+import { MissionMercs } from "./MissionMercs";
 import "./mission.scss"
 export const MissionPage = () => {
     const [mission, setMission] = useState(null);
     const [mercs, setMercs] = useState([]);
     const [sentMercs, setSentMercs] = useState([]);
-    const [error, setError] = useState("");
+    const [gold, setGold] = useState(0);
+    const [wage, setWage] = useState(0);
+    const [error1, setError1] = useState("");
+    const [error2, setError2] = useState("");
     const [loading, setLoading] = useState(true);
-    console.log(sentMercs);
     const handleMissionStart = async () => {
         try {
             const token = localStorage.getItem("token");
@@ -34,10 +37,12 @@ export const MissionPage = () => {
                         Authorization: `Bearer ${token}`
                     }
                 });
+                console.log("Fetched mission:", res.data.data);
                 setMission(res.data.data.mission);
+                setGold(res.data.data.gold);
             } catch (err) {
                 console.error(err);
-                setError("Failed to fetch mission details.");
+                setError1("Failed to fetch mission details.");
             } finally {
                 setLoading(false);
             }
@@ -54,7 +59,7 @@ export const MissionPage = () => {
                 setMercs(res.data.data.mercs);
             } catch (err) {
                 console.error("Failed to fetch mercenaries:", err);
-                setError("Failed to fetch mercenaries.");
+                setError1("Failed to fetch mercenaries.");
             }
         }
         fetchMercs();
@@ -66,7 +71,7 @@ export const MissionPage = () => {
         <div className="mission-page">
             <h1 className="mission-title">Mission Page</h1>
             <p className="mission-subtitle">Here you can view details about your mission.</p>
-            {error && <p className="mission-error">{error}</p>}
+            {error1 && <p className="mission-error">{error1}</p>}
             {loading && <p className="mission-loading">Loading mission details...</p>}
             {mission && (
                 <div className="mission-details">
@@ -79,41 +84,35 @@ export const MissionPage = () => {
                     <p className="mission-description">Description: {mission.description}</p>
                 </div>
             )}
-            <h2>Available Mercenaries</h2>
+            <div>            
+                <h2>Available Mercenaries</h2>
+                <p className="gold-amount">Gold: {gold}</p>
+                <p className="wage-amount">Wage: {wage}</p>
+            </div>
             {mercs.length > 0 ? (
                 <div className="merc-list">
                     {mercs.map((merc, index) => (
-                        <div key={index} className="merc-card">
-                            <h3 className="merc-name">{merc.firstName} {merc.lastName}</h3>
-                            <div className="merc-stats">
-                                <p>Strength: {merc.stats.strength}</p>
-                                <p>Agility: {merc.stats.agility}</p>
-                                <p>Intelligence: {merc.stats.intelligence}</p>
-                            </div>
-                            <p>Archetype: {merc.archetype}</p>
-                            <p className="merc-description">Description: {merc.description}</p>
-                            <p>Wage: {merc.wage}</p>
-                            <p className="injury-status">Injury Status: {merc.injuryStatus}</p>
-                            <label className="mission-checkbox-wrapper">
-                                <input
-                                    className="mission-checkbox"
-                                    type="checkbox"
-                                    checked={sentMercs.includes(merc._id)}
-                                    onChange={(e) => {
-                                    const isChecked = e.target.checked;
-                                    const id = merc._id;
-
-                                    setSentMercs(prev => {
-                                        return isChecked ? [...prev, id] : prev.filter(m => m !== id);
-                                    });
-                                    }}
-                                />
-                                <span className="checkbox-label-text">Send on this mission</span>
-                            </label>
-
-                        </div>
+                        <MissionMercs
+                            key={index}
+                            id={merc._id}
+                            firstName={merc.firstName}
+                            lastName={merc.lastName}
+                            stats={merc.stats}
+                            price={merc.price}
+                            archetype={merc.archetype}
+                            description={merc.description}
+                            wage={merc.wage}
+                            injuryStatus={merc.injuryStatus}
+                            sentMercs={sentMercs}
+                            setSentMercs={setSentMercs}
+                            setWage={setWage}
+                            calcWage={wage}
+                            setError2={setError2}
+                            gold={gold}
+                        />
                     ))}
-                    <button className="action-button" onClick={handleMissionStart}>Start mission</button>
+                    {error2 && <p className="error-msg">{error2}</p>}
+                    <button disabled={error2} className="action-link" onClick={handleMissionStart}>Start mission</button>
                 </div>
             ) : (
                 <p>No mercenaries available.</p>

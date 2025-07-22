@@ -22,7 +22,6 @@
 }
 
 .merc-card {
-    background-color: #fff7dd;
     border: 1px solid #c9b178;
     border-left: 4px solid #d4af37;
     border-radius: 0.75rem;
@@ -63,22 +62,6 @@
         color: #3f331a;
     }
 
-    .injury-status {
-        font-weight: bold;
-
-        &.healthy {
-        color: #2e7d32;
-        }
-
-        &.injured {
-        color: #c62828;
-        }
-
-        &.critical {
-        color: #ff6f00;
-        }
-    }
-
     .action-button {
         margin-top: 1rem;
         padding: 0.5rem 1rem;
@@ -99,4 +82,14 @@
         cursor: not-allowed;
         }
     }
+}
+
+.injury-healthy {
+    background-color: #fff7dd;;
+}
+.injury-injured {
+    background-color: #ffe0b3; // light orange
+}
+.injury-dead {
+    background-color: #ffb3b3; // light red
 }

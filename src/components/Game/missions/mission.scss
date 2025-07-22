@@ -106,3 +106,25 @@
         font-size: 1rem;
     }
 }
+
+.action-link {
+        margin-top: 3rem;
+        text-decoration: none;
+        padding: 0.5rem 0.5rem;
+        background-color: #d4af37;
+        color: #000;
+        border: none;
+        border-radius: 0.4rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover:not(:disabled) {
+        background-color: #b68c1b;
+        }
+
+        &:disabled {
+        background-color: #c0b38c;
+        cursor: not-allowed;
+        }
+    }

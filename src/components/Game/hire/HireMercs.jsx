@@ -6,8 +6,18 @@ import "./hire.scss";
 
 export const HireMercs = () => {
     const [mercs, setMercs] = useState([])
+    const [gold, setGold] = useState(0)
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(true)
+
+    const deductGold = (amount) => {
+        if (gold >= amount) {
+            setGold(gold - amount);
+            setError(""); // Clear any previous error
+        } else {
+            setError("Not enough gold.");
+        }
+    }
 
     useEffect(() => {
         const fetchMercs = async () => {
@@ -21,6 +31,8 @@ export const HireMercs = () => {
                         }
                     })
                 setMercs(res.data.data.mercs)
+                setGold(res.data.data.gold)
+                console.log("Fetched data:", res.data.data);
             } catch (err) {
                 console.error(err)
                 setError("Failed to fetch mercenaries.")
@@ -36,7 +48,10 @@ export const HireMercs = () => {
         <>
         <Header/>
         <section className="hire-section">
-            <h2 className="section-title">Hireable mercenaries</h2>
+            <div className="hire-header">
+                <h2 className="section-title">Hire mercenaries</h2>
+                <p className="gold-amount">Gold: {gold}</p>
+            </div>
             {error && <p className="error-msg">{error}</p>}
             {loading && <p className="loading-msg">Loading mercenaries...</p>}
             {mercs.map((merc, index) => (
@@ -50,6 +65,7 @@ export const HireMercs = () => {
                     description={merc.description}
                     wage={merc.wage}
                     injuryStatus={merc.injuryStatus}
+                    deductGold={deductGold}
                 />
             ))}
         </section>
