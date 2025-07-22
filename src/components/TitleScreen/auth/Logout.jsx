@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "./auth.scss";
 
 export const Logout = () => {
     const navigate = useNavigate()
@@ -8,6 +9,6 @@ export const Logout = () => {
         navigate("/")
     }
     return(
-        <button onClick={handleLogout}>Log Out</button>
+        <button className="auth-button" onClick={handleLogout}>Log Out</button>
     )
 }

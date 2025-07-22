@@ -20,16 +20,16 @@ export const MissionCard = (props) => {
     }
 
     return (
-        <div className="mission-card">
-            <h3>{props.name}</h3>
-            <div>
+        <div className="merc-card">
+            <h3 className="merc-name">{props.name}</h3>
+            <div className="merc-stats">
                 <p>Strength: {props.stats.strength}</p>
                 <p>Agility: {props.stats.agility}</p>
                 <p>Intelligence: {props.stats.intelligence}</p>
             </div>
             <p>Reward: {props.reward}</p>
-            <p>Description: {props.description}</p>
-            <button onClick={handleAccept} disabled={accepted}>Accept</button>
+            <p className="merc-description">Description: {props.description}</p>
+            <button className="action-button" onClick={handleAccept} disabled={accepted}>Accept</button>
         </div>
     )
 }

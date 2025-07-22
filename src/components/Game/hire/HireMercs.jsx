@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { MercCardHire } from "./MercCardHire";
+import { Header } from "../Header";
+import "./hire.scss";
 
 export const HireMercs = () => {
     const [mercs, setMercs] = useState([])
@@ -31,10 +33,12 @@ export const HireMercs = () => {
     }, [])
 
     return (
-        <section>
-            <h2>Hireable mercenaries</h2>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {loading && <p>Loading mercenaries...</p>}
+        <>
+        <Header/>
+        <section className="hire-section">
+            <h2 className="section-title">Hireable mercenaries</h2>
+            {error && <p className="error-msg">{error}</p>}
+            {loading && <p className="loading-msg">Loading mercenaries...</p>}
             {mercs.map((merc, index) => (
                 <MercCardHire
                     key={index}
@@ -49,5 +53,6 @@ export const HireMercs = () => {
                 />
             ))}
         </section>
+        </>
     )
 }

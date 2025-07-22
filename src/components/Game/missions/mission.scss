@@ -1,0 +1,108 @@
+.mission-page {
+    padding: 2rem;
+    background: #fcf5dd; // dusty yellow parchment
+    border-radius: 1.2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
+    margin: 3rem auto;
+
+    .mission-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #3e2d14;
+    }
+
+    .mission-subtitle {
+        font-size: 1rem;
+        color: #5f4a27;
+        margin-bottom: 1.5rem;
+    }
+
+    .mission-error {
+        color: #b22222;
+        font-weight: bold;
+    }
+
+    .mission-loading {
+        color: #7a692f;
+        font-style: italic;
+    }
+
+    .mission-details {
+        padding: 1.5rem;
+        border: 2px dashed #d1b87c;
+        background-color: #fff9e3;
+        border-radius: 0.8rem;
+        margin-top: 1rem;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+
+        .mission-name {
+        font-size: 1.5rem;
+        color: #4d3b1f;
+        margin-bottom: 1rem;
+        }
+
+        .mission-stat {
+        margin: 0.4rem 0;
+        color: #5a4721;
+        }
+
+        .mission-reward {
+        margin: 0.6rem 0;
+        font-weight: bold;
+        color: #997a00;
+        }
+
+        .mission-description {
+        margin-top: 1rem;
+        font-style: italic;
+        color: #3c2f1c;
+        }
+    }
+}
+
+.mission-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+    color: #4a3a1e;
+
+    .mission-checkbox {
+        appearance: none;
+        width: 1.2rem;
+        height: 1.2rem;
+        border: 2px solid #bca86b;
+        background-color: #fdf6d9;
+        border-radius: 0.25rem;
+        position: relative;
+        cursor: pointer;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+
+        &:checked {
+        background-color: #d4af37;
+        border-color: #8f7e47;
+
+        &::after {
+            content: "✔";
+            position: absolute;
+            top: -2px;
+            left: 2px;
+            font-size: 1rem;
+            color: #000;
+        }
+        }
+
+        &:hover {
+        border-color: #a08a52;
+        }
+    }
+
+    .checkbox-label-text {
+        font-size: 1rem;
+    }
+}

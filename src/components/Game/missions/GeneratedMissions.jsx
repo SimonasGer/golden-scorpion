@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Header } from "../Header";
 import { MissionCard } from "./MissionCard";
 
 export const GeneratedMissions = () => {
@@ -30,10 +31,12 @@ export const GeneratedMissions = () => {
     }, [])
 
     return (
-        <section>
-            <h2>Available missions</h2>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {loading && <p>Loading missions...</p>}
+        <>
+        <Header />
+        <section className="hire-section">
+            <h2 className="section-title">Available missions</h2>
+            {error && <p className="error-msg">{error}</p>}
+            {loading && <p className="loading-msg">Loading missions...</p>}
             {missions.map((mission, index) => (
                 <MissionCard
                     key={index}
@@ -44,5 +47,6 @@ export const GeneratedMissions = () => {
                 />
             ))}
         </section>
+        </>
     )
 }

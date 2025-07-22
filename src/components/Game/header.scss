@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5e4b0; // pale sand
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #c2a96c; // bleak, aged gold
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    .header-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #4d3b1f; // dust-brown
+        letter-spacing: 1px;
+    }
+
+    .header-nav {
+        display: flex;
+        gap: 1.5rem;
+
+        .header-link {
+        font-weight: 600;
+        color: #6b552f; // scorched yellow-brown
+        text-decoration: none;
+        padding: 0.4rem 0.75rem;
+        border-radius: 0.4rem;
+        transition: background 0.2s;
+
+        &:hover {
+            background-color: #e8d48a; // sun-bleached highlight
+            color: #000;
+        }
+        }
+    }
+}

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Header } from "../Header";
+import "./mission.scss"
 export const MissionPage = () => {
     const [mission, setMission] = useState(null);
     const [mercs, setMercs] = useState([]);
@@ -59,19 +61,22 @@ export const MissionPage = () => {
         fetchMission();
     }, []);
     return (
+        <>
+        <Header />
         <div className="mission-page">
-            <h1>Mission Page</h1>
-            <p>Here you can view details about your mission.</p>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {loading && <p>Loading mission details...</p>}
+            <h1 className="mission-title">Mission Page</h1>
+            <p className="mission-subtitle">Here you can view details about your mission.</p>
+            {error && <p className="mission-error">{error}</p>}
+            {loading && <p className="mission-loading">Loading mission details...</p>}
             {mission && (
                 <div className="mission-details">
-                    <h2>{mission.name}</h2>
-                    <p>Strength: {mission.stats.strength}</p>
-                    <p>Agility: {mission.stats.agility}</p>
-                    <p>Intelligence: {mission.stats.intelligence}</p>
-                    <p>Reward: {mission.reward}</p>
-                    <p>Description: {mission.description}</p>
+                    <h2 className="mission-name">{mission.name}</h2>
+                    <h3 className="mission-name">Stat requirements</h3>
+                    <p className="mission-stat">Strength: {mission.stats.strength}</p>
+                    <p className="mission-stat">Agility: {mission.stats.agility}</p>
+                    <p className="mission-stat">Intelligence: {mission.stats.intelligence}</p>
+                    <p className="mission-reward">Reward: {mission.reward}</p>
+                    <p className="mission-description">Description: {mission.description}</p>
                 </div>
             )}
             <h2>Available Mercenaries</h2>
@@ -79,38 +84,41 @@ export const MissionPage = () => {
                 <div className="merc-list">
                     {mercs.map((merc, index) => (
                         <div key={index} className="merc-card">
-                            <h3>{merc.firstName} {merc.lastName}</h3>
-                            <p>Strength: {merc.stats.strength}</p>
-                            <p>Agility: {merc.stats.agility}</p>
-                            <p>Intelligence: {merc.stats.intelligence}</p>
-                            <p>Price: {merc.price}</p>
+                            <h3 className="merc-name">{merc.firstName} {merc.lastName}</h3>
+                            <div className="merc-stats">
+                                <p>Strength: {merc.stats.strength}</p>
+                                <p>Agility: {merc.stats.agility}</p>
+                                <p>Intelligence: {merc.stats.intelligence}</p>
+                            </div>
                             <p>Archetype: {merc.archetype}</p>
-                            <p>Description: {merc.description}</p>
+                            <p className="merc-description">Description: {merc.description}</p>
                             <p>Wage: {merc.wage}</p>
-                            <p>Injury Status: {merc.injuryStatus}</p>
-                            <input
-                                type="checkbox"
-                                checked={sentMercs.includes(merc._id)}
-                                onChange={(e) => {
+                            <p className="injury-status">Injury Status: {merc.injuryStatus}</p>
+                            <label className="mission-checkbox-wrapper">
+                                <input
+                                    className="mission-checkbox"
+                                    type="checkbox"
+                                    checked={sentMercs.includes(merc._id)}
+                                    onChange={(e) => {
                                     const isChecked = e.target.checked;
                                     const id = merc._id;
 
                                     setSentMercs(prev => {
-                                    if (isChecked) {
-                                        return [...prev, id];
-                                    } else {
-                                        return prev.filter(m => m !== id);
-                                    }
+                                        return isChecked ? [...prev, id] : prev.filter(m => m !== id);
                                     });
-                                }}
-                            />
+                                    }}
+                                />
+                                <span className="checkbox-label-text">Send on this mission</span>
+                            </label>
+
                         </div>
                     ))}
-                    <button onClick={handleMissionStart}>Start mission</button>
+                    <button className="action-button" onClick={handleMissionStart}>Start mission</button>
                 </div>
             ) : (
                 <p>No mercenaries available.</p>
             )}
         </div>
+        </>
     );
 }

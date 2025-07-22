@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "./auth.scss";
 
 export const Login = () => {
     const navigate = useNavigate();
@@ -34,13 +35,14 @@ export const Login = () => {
         }
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Login</h2>
-            <fieldset>
-                <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-                <input type="password" name="password" placeholder="password" value={formData.password} onChange={handleChange} required />
-                <button type="submit">Log In</button>
-                {error && <p style={{ color: "red" }}>{error}</p>}
+        <form className="auth-form" onSubmit={handleSubmit}>
+            <h2 className="auth-title">Login</h2>
+            <fieldset className="auth-fieldset">
+                <input className="auth-input" type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+                <input className="auth-input" type="password" name="password" placeholder="password" value={formData.password} onChange={handleChange} required />
+                <button className="auth-button" type="submit">Log In</button>
+                <Link to="/register" className="auth-link">Don't have an account?</Link>
+                {error && <p className="auth-error">{error}</p>}
             </fieldset>
         </form>
     )

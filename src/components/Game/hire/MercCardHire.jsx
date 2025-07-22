@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState } from "react";
+import "./hire.scss";
 
 export const MercCardHire = (props) => {
     const [hired, setHired] = useState(false);
@@ -23,18 +24,18 @@ export const MercCardHire = (props) => {
 
     return (
         <div className="merc-card">
-            <h3>{props.firstName} {props.lastName}</h3>
-            <div>
+            <h3 className="merc-name">{props.firstName} {props.lastName}</h3>
+            <div className="merc-stats">
                 <p>Strength: {props.stats.strength}</p>
                 <p>Agility: {props.stats.agility}</p>
                 <p>Intelligence: {props.stats.intelligence}</p>
             </div>
             <p>Price: {props.price}</p>
             <p>Archetype: {props.archetype}</p>
-            <p>Description: {props.description}</p>
+            <p className="merc-description">Description: {props.description}</p>
             <p>Wage: {props.wage}</p>
-            <p>Injury Status: {props.injuryStatus}</p>
-            <button onClick={handleHire} disabled={hired}>Hire</button>
+            <p className="injury-status">Injury status: {props.injuryStatus}</p>
+            <button className="action-button" onClick={handleHire} disabled={hired}>Hire</button>
         </div>
     )
 }

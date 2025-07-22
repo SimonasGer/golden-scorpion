@@ -22,18 +22,18 @@ export const MercCardOwned = (props) => {
 
     return (
         <div className="merc-card">
-            <h3>{props.firstName} {props.lastName}</h3>
-            <div>
+            <h3 className="merc-title">{props.firstName} {props.lastName}</h3>
+            <div className="merc-stats">
                 <p>Strength: {props.stats.strength}</p>
                 <p>Agility: {props.stats.agility}</p>
                 <p>Intelligence: {props.stats.intelligence}</p>
             </div>
             <p>Price: {props.price}</p>
             <p>Archetype: {props.archetype}</p>
-            <p>Description: {props.description}</p>
+            <p className="merc-description">Description: {props.description}</p>
             <p>Wage: {props.wage}</p>
-            <p>Injury Status: {props.injuryStatus}</p>
-            <button onClick={handleFire} disabled={hired}>Fire</button>
+            <p className="injury-status">Injury Status: {props.injuryStatus}</p>
+            <button className="action-button" onClick={handleFire} disabled={hired}>Fire</button>
         </div>
     )
 }

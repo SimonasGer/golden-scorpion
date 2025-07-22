@@ -1,0 +1,102 @@
+.hire-section {
+    padding: 2rem;
+    background-color: #f6eac3; // dusty parchment
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(80, 60, 20, 0.1);
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #3e2d14;
+    }
+
+    .error-msg {
+        color: #b30000;
+        font-weight: bold;
+    }
+
+    .loading-msg {
+        font-style: italic;
+        color: #6b552f;
+    }
+}
+
+.merc-card {
+    background-color: #fff7dd;
+    border: 1px solid #c9b178;
+    border-left: 4px solid #d4af37;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 6px rgba(80, 60, 20, 0.1);
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    .merc-name {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #4d3b1f;
+    }
+
+    .merc-stats {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.75rem;
+
+        p {
+        margin: 0;
+        color: #5a4721;
+        }
+    }
+
+    p {
+        margin: 0.25rem 0;
+        color: #5a4721;
+    }
+
+    .merc-description {
+        font-style: italic;
+        color: #3f331a;
+    }
+
+    .injury-status {
+        font-weight: bold;
+
+        &.healthy {
+        color: #2e7d32;
+        }
+
+        &.injured {
+        color: #c62828;
+        }
+
+        &.critical {
+        color: #ff6f00;
+        }
+    }
+
+    .action-button {
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: #d4af37;
+        color: #000;
+        border: none;
+        border-radius: 0.4rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover:not(:disabled) {
+        background-color: #b68c1b;
+        }
+
+        &:disabled {
+        background-color: #c0b38c;
+        cursor: not-allowed;
+        }
+    }
+}

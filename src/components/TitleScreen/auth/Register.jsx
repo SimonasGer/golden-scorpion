@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "./auth.scss";
 
 export const Register = () => {
     const navigate = useNavigate();
@@ -43,16 +44,17 @@ export const Register = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-        <h2>Register</h2>
-        <fieldset>
-            <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-            <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} required />
-            <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
-            <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
-            <button type="submit">Register</button>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-        </fieldset>
+        <form className="auth-form" onSubmit={handleSubmit}>
+            <h2 className="auth-title">Register</h2>
+            <fieldset className="auth-fieldset">
+                <input className="auth-input" type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+                <input className="auth-input" type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} required />
+                <input className="auth-input" type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
+                <input className="auth-input" type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
+                <button className="auth-button" type="submit">Register</button>
+                <Link to="/login" className="auth-link">Already have an account?</Link>
+                {error && <p className="auth-button">{error}</p>}
+            </fieldset>
         </form>
     )
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Header } from "../Header";
 import { MercCardOwned } from "./MercCardOwned";
 
 export const OwnedMercs = () => {
@@ -28,10 +29,12 @@ export const OwnedMercs = () => {
         fetchMercs()
     }, [])
     return (
-        <section>
-            <h2>Hireable mercenaries</h2>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {loading && <p>Loading mercenaries...</p>}
+        <>
+        <Header/>
+        <section className="hire-section">
+            <h2 className="section-title">Hired mercenaries</h2>
+            {error && <p className="error-msg">{error}</p>}
+            {loading && <p className="loading-msg">Loading mercenaries...</p>}
             {mercs.map((merc, index) => (
                 <MercCardOwned 
                     key={index}
@@ -47,5 +50,6 @@ export const OwnedMercs = () => {
                 />
             ))}
         </section>
+        </>
     )
 }
