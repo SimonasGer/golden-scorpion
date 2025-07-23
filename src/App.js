@@ -9,6 +9,7 @@ import { OwnedMercs } from "./components/Game/owned/OwnedMercs";
 import { GeneratedMissions } from "./components/Game/missions/GeneratedMissions";
 import { AcceptedMissions } from "./components/Game/missions/AcceptedMissions";
 import { MissionPage } from "./components/Game/missions/MissionPage";
+import { MissionLog } from "./components/Game/missions/MissionLog";
 
 const isTokenValid = (token) => {
   try {
@@ -110,6 +111,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <MissionPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/missions/log"
+            element={
+              <ProtectedRoute>
+                <MissionLog />
               </ProtectedRoute>
             }
           />

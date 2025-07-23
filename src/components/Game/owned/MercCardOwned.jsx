@@ -2,12 +2,35 @@ import axios from "axios"
 import { useState } from "react";
 
 export const MercCardOwned = (props) => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [hired, setHired] = useState(false);
+    const [injuryStatus, setInjuryStatus] = useState(props.injuryStatus);
+    const [error, setError] = useState("");
+    const buttonLabel = props.injuryStatus === "dead" ? "Bury" : "Fire"
+
+    const handleHeal = () => {
+        try {
+
+            const token = localStorage.getItem("token")
+            axios.patch(`${apiUrl}/mercs/${props.id}`, {}, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            props.setGold(props.gold - 100);
+            setInjuryStatus("healthy");
+            setError("");
+        } catch (err) {
+            console.error("Failed to heal merc:", err)
+            setError("Failed to heal mercenary.")
+        }
+    }
+
     const handleFire = async () => {
         try {
             setHired(true);
             const token = localStorage.getItem("token")
-            const res = await axios.delete(`http://localhost:8080/mercs/${props.id}`,
+            const res = await axios.delete(`${apiUrl}/mercs/${props.id}`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -21,7 +44,7 @@ export const MercCardOwned = (props) => {
     }
 
     return (
-        <div className={`merc-card injury-${props.injuryStatus}`}>
+        <div className={`merc-card injury-${injuryStatus}`}>
             <h3 className="merc-title">{props.firstName} {props.lastName}</h3>
             <div className="merc-stats">
                 <p>Strength: {props.stats.strength}</p>
@@ -32,8 +55,12 @@ export const MercCardOwned = (props) => {
             <p>Archetype: {props.archetype}</p>
             <p className="merc-description">Description: {props.description}</p>
             <p>Wage: {props.wage}</p>
-            <p className="injury-status">Injury Status: {props.injuryStatus}</p>
-            <button className="action-button" onClick={handleFire} disabled={hired}>Fire</button>
+            <p className="injury-status">Injury Status: {injuryStatus}</p>
+            <div>
+                <button className="action-button" onClick={handleFire} disabled={hired}>{buttonLabel}</button>
+                {injuryStatus === "injured" && <button className="action-button" onClick={handleHeal}>Heal</button>}
+                {error && <p className="error-msg">{error}</p>}
+            </div>
         </div>
     )
 }

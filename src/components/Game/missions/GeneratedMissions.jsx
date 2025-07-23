@@ -4,6 +4,7 @@ import { Header } from "../Header";
 import { MissionCard } from "./MissionCard";
 
 export const GeneratedMissions = () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [missions, setMissions] = useState([])
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(true)
@@ -12,7 +13,7 @@ export const GeneratedMissions = () => {
         const fetchMissions = async () => {
             try {
                 const token = localStorage.getItem("token")
-                const res = await axios.get("http://localhost:8080/missions?count=5",
+                const res = await axios.get(`${apiUrl}/missions?count=5`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -28,7 +29,7 @@ export const GeneratedMissions = () => {
         }
 
         fetchMissions()
-    }, [])
+    }, [apiUrl])
 
     return (
         <>

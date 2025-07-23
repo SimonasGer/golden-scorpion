@@ -3,13 +3,14 @@ import { useState } from "react";
 import "./hire.scss";
 
 export const MercCardHire = (props) => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [hired, setHired] = useState(false);
     const handleHire = async () => {
         try {
             setHired(true);
             const token = localStorage.getItem("token")
             console.log("Hiring merc:", props)
-            const res = await axios.post("http://localhost:8080/mercs/hire", props,
+            const res = await axios.post(`${apiUrl}/mercs/hire`, props,
             {
                 headers: {
                     Authorization: `Bearer ${token}`

@@ -5,6 +5,7 @@ import { Header } from "../Header";
 import "./hire.scss";
 
 export const HireMercs = () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [mercs, setMercs] = useState([])
     const [gold, setGold] = useState(0)
     const [error, setError] = useState("")
@@ -23,7 +24,7 @@ export const HireMercs = () => {
         const fetchMercs = async () => {
             try {
                 const token = localStorage.getItem("token")
-                const res = await axios.post("http://localhost:8080/mercs?count=5",
+                const res = await axios.post(`${apiUrl}/mercs?count=5`,
                     {}, 
                     {
                         headers: {
@@ -42,7 +43,7 @@ export const HireMercs = () => {
         }
 
         fetchMercs()
-    }, [])
+    }, [apiUrl])
 
     return (
         <>

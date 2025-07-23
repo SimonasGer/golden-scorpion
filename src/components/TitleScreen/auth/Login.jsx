@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "./auth.scss";
 
 export const Login = () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: "",
@@ -22,7 +23,7 @@ export const Login = () => {
         e.preventDefault()
         setError("")
         try {
-        const res = await axios.post("http://localhost:8080/users/login", {
+        const res = await axios.post(`${apiUrl}/users/login`, {
             email: formData.email,
             password: formData.password,
         })

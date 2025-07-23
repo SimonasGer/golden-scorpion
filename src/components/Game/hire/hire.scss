@@ -84,12 +84,12 @@
     }
 }
 
-.injury-healthy {
+.injury-healthy, .mission-completed {
     background-color: #fff7dd;;
 }
 .injury-injured {
     background-color: #ffe0b3; // light orange
 }
-.injury-dead {
+.injury-dead, .mission-failed {
     background-color: #ffb3b3; // light red
 }

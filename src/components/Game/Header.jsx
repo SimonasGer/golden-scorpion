@@ -12,6 +12,7 @@ export const Header = () => {
                 <Link to="/mercs/hire" className="header-link">Hire mercenaries</Link>
                 <Link to="/missions/generated" className="header-link">Missions</Link>
                 <Link to="/missions/accepted" className="header-link">Accepted missions</Link>
+                <Link to="/missions/log" className="header-link">Mission Log</Link>
                 <Logout className="header-link" />
             </nav>
         </header>

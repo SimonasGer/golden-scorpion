@@ -4,6 +4,7 @@ import { Header } from "../Header";
 import { AcceptedMissionCard } from "./AcceptedMissionCard";
 
 export const AcceptedMissions = () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [missions, setMissions] = useState([])
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(true)
@@ -12,7 +13,7 @@ export const AcceptedMissions = () => {
         const fetchMissions = async () => {
             try {
                 const token = localStorage.getItem("token")
-                const res = await axios.get("http://localhost:8080/missions/accepted",
+                const res = await axios.get(`${apiUrl}/missions/accepted`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -27,7 +28,7 @@ export const AcceptedMissions = () => {
             }
         }
         fetchMissions()
-    }, [])
+    }, [apiUrl])
 
     return (
         <>

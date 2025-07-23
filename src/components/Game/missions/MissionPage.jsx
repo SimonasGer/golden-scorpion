@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Header } from "../Header";
 import { MissionMercs } from "./MissionMercs";
+import { useNavigate } from "react-router-dom";
 import "./mission.scss"
 export const MissionPage = () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const navigate = useNavigate();
     const [mission, setMission] = useState(null);
     const [mercs, setMercs] = useState([]);
     const [sentMercs, setSentMercs] = useState([]);
@@ -16,12 +19,13 @@ export const MissionPage = () => {
         try {
             const token = localStorage.getItem("token");
             const missionId = window.location.pathname.split("/").pop(); // Get the mission ID from the URL
-            const res = await axios.patch(`http://localhost:8080/missions/${missionId}`, { mercIds: sentMercs }, {
+            const res = await axios.patch(`${apiUrl}/missions/${missionId}`, { mercIds: sentMercs }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
             console.log("Mission started:", res.data);
+            navigate("/missions/log");
         } catch (err) {
             console.error("Failed to start mission:", err);
         }
@@ -32,7 +36,7 @@ export const MissionPage = () => {
             try {
                 const token = localStorage.getItem("token");
                 const missionId = window.location.pathname.split("/").pop(); // Get the mission ID from the URL
-                const res = await axios.get(`http://localhost:8080/missions/${missionId}`, {
+                const res = await axios.get(`${apiUrl}/missions/${missionId}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -50,7 +54,7 @@ export const MissionPage = () => {
         const fetchMercs = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await axios.get("http://localhost:8080/mercs", {
+                const res = await axios.get(`${apiUrl}/mercs`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -64,7 +68,7 @@ export const MissionPage = () => {
         }
         fetchMercs();
         fetchMission();
-    }, []);
+    }, [apiUrl]);
     return (
         <>
         <Header />

@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "./auth.scss";
 
 export const Register = () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: "",
@@ -29,7 +30,7 @@ export const Register = () => {
         }
 
         try {
-        const res = await axios.post("http://localhost:8080/users/register", {
+        const res = await axios.post(`${apiUrl}/users/register`, {
             email: formData.email,
             username: formData.username,
             password: formData.password,
