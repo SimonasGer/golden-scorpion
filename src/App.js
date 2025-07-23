@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Analytics } from '@vercel/analytics/react';
 import { jwtDecode } from "jwt-decode";
 import { GameStart } from "./components/TitleScreen/GameStart";
 import { MainMenu } from "./components/Game/MainMenu";
@@ -128,6 +129,7 @@ function App() {
           />
         </Routes>
       </Router>
+      <Analytics />
     </div>
   );
 }
