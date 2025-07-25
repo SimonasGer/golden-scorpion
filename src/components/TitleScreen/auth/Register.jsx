@@ -54,7 +54,7 @@ export const Register = () => {
                 <input className="auth-input" type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
                 <button className="auth-button" type="submit">Register</button>
                 <Link to="/login" className="auth-link">Already have an account?</Link>
-                {error && <p className="auth-button">{error}</p>}
+                {error && <p className="auth-error">{error}</p>}
             </fieldset>
         </form>
     )
