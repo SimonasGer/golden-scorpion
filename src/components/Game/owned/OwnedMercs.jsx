@@ -20,6 +20,7 @@ export const OwnedMercs = () => {
                             Authorization: `Bearer ${token}`
                         }
                     })
+                console.log(res.data.data)
                 setMercs(res.data.data.mercs)
                 setGold(res.data.data.gold)
             } catch (err) {
@@ -42,15 +43,17 @@ export const OwnedMercs = () => {
             {mercs.map((merc, index) => (
                 <MercCardOwned 
                     key={index}
-                    id={merc._id}
-                    firstName={merc.firstName}
-                    lastName={merc.lastName}
-                    stats={merc.stats}
+                    id={merc.id}
+                    firstName={merc.first_name}
+                    lastName={merc.last_name}
+                    strength={merc.strength}
+                    agility={merc.agility}
+                    intelligence={merc.intelligence}
                     price={merc.price}
                     archetype={merc.archetype}
                     description={merc.description}
                     wage={merc.wage}
-                    injuryStatus={merc.injuryStatus}
+                    injuryStatus={merc.injury_status}
                     setGold={setGold}
                     gold={gold}
                 />

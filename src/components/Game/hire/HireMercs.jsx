@@ -60,7 +60,9 @@ export const HireMercs = () => {
                     key={index}
                     firstName={merc.firstName}
                     lastName={merc.lastName}
-                    stats={merc.stats}
+                    strength={merc.strength}
+                    agility={merc.agility}
+                    intelligence={merc.intelligence}
                     price={merc.price}
                     archetype={merc.archetype}
                     description={merc.description}

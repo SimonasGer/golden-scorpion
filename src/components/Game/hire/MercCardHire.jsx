@@ -10,7 +10,7 @@ export const MercCardHire = (props) => {
             setHired(true);
             const token = localStorage.getItem("token")
             console.log("Hiring merc:", props)
-            const res = await axios.post(`${apiUrl}/mercs/hire`, props,
+            await axios.post(`${apiUrl}/mercs/hire`, props,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -18,7 +18,6 @@ export const MercCardHire = (props) => {
             }
         )
             props.deductGold(props.price);
-        console.log("Merc hired:", res.data.data.merc)
         } catch (err) {
             console.error("Failed to hire merc:", err)
         }
@@ -28,9 +27,9 @@ export const MercCardHire = (props) => {
         <div className="merc-card">
             <h3 className="merc-name">{props.firstName} {props.lastName}</h3>
             <div className="merc-stats">
-                <p>Strength: {props.stats.strength}</p>
-                <p>Agility: {props.stats.agility}</p>
-                <p>Intelligence: {props.stats.intelligence}</p>
+                <p>Strength: {props.strength}</p>
+                <p>Agility: {props.agility}</p>
+                <p>Intelligence: {props.intelligence}</p>
             </div>
             <p>Price: {props.price}</p>
             <p>Archetype: {props.archetype}</p>
