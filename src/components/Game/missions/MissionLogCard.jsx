@@ -14,7 +14,6 @@ export const MissionLogCard = (props) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            console.log("Mission scrubbed:", props.id);
             setDisabled(true);
         } catch (err) {
             console.error("Failed to scrub mission:", err)
@@ -25,14 +24,14 @@ export const MissionLogCard = (props) => {
         <div className={`merc-card mission-${props.status}`}>
             <h3 className="merc-name">{props.name}</h3>
             <div className="merc-stats">
-                <p>Strength: {props.stats.strength}</p>
-                <p>Agility: {props.stats.agility}</p>
-                <p>Intelligence: {props.stats.intelligence}</p>
+                <p>Strength: {props.strength}</p>
+                <p>Agility: {props.agility}</p>
+                <p>Intelligence: {props.intelligence}</p>
             </div>
             <p>Status: {props.status}</p>
             <p>Reward: {props.reward}</p>
             <p className="merc-description">Description: {props.description}</p>
-            <p className="merc-sent">Sent Mercenaries: {props.mercs.length}</p>
+            <p className="merc-sent">Sent Mercenaries: Dont worry about it</p>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <button disabled={disabled} className="action-button" onClick={handleScrub}>Scrub mission from records</button>
             </div>

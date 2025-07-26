@@ -19,7 +19,8 @@ export const GeneratedMissions = () => {
                             Authorization: `Bearer ${token}`
                         }
                     })
-                setMissions(res.data.data.missions)
+                setMissions(res.data.data)
+                console.log(res.data.data)
             } catch (err) {
                 console.error(err)
                 setError("Failed to fetch mercenaries.")
@@ -42,7 +43,9 @@ export const GeneratedMissions = () => {
                 <MissionCard
                     key={index}
                     name={mission.name}
-                    stats={mission.stats}
+                    strength={mission.strength}
+                    agility={mission.agility}
+                    intelligence={mission.intelligence}
                     reward={mission.reward}
                     description={mission.description}
                 />

@@ -25,9 +25,11 @@ export const MissionPage = () => {
                 }
             });
             console.log("Mission started:", res.data);
+            setError2("")
             navigate("/missions/log");
         } catch (err) {
             console.error("Failed to start mission:", err);
+            setError2(err.response.data.message);
         }
     }
 
@@ -81,9 +83,9 @@ export const MissionPage = () => {
                 <div className="mission-details">
                     <h2 className="mission-name">{mission.name}</h2>
                     <h3 className="mission-name">Stat requirements</h3>
-                    <p className="mission-stat">Strength: {mission.stats.strength}</p>
-                    <p className="mission-stat">Agility: {mission.stats.agility}</p>
-                    <p className="mission-stat">Intelligence: {mission.stats.intelligence}</p>
+                    <p className="mission-stat">Strength: {mission.strength}</p>
+                    <p className="mission-stat">Agility: {mission.agility}</p>
+                    <p className="mission-stat">Intelligence: {mission.intelligence}</p>
                     <p className="mission-reward">Reward: {mission.reward}</p>
                     <p className="mission-description">Description: {mission.description}</p>
                 </div>
@@ -95,18 +97,19 @@ export const MissionPage = () => {
             </div>
             {mercs.length > 0 ? (
                 <div className="merc-list">
-                    {mercs.map((merc, index) => (
+                    {mercs.map((merc) => (
                         <MissionMercs
-                            key={index}
-                            id={merc._id}
+                            key={merc.id}
+                            id={merc.id}
                             firstName={merc.firstName}
                             lastName={merc.lastName}
-                            stats={merc.stats}
-                            price={merc.price}
+                            strength={merc.strength}
+                            agility={merc.agility}
+                            intelligence={merc.intelligence}
                             archetype={merc.archetype}
                             description={merc.description}
                             wage={merc.wage}
-                            injuryStatus={merc.injuryStatus}
+                            injury_status={merc.injury_status}
                             sentMercs={sentMercs}
                             setSentMercs={setSentMercs}
                             setWage={setWage}

@@ -19,7 +19,8 @@ export const AcceptedMissions = () => {
                             Authorization: `Bearer ${token}`
                         }
                     })
-                setMissions(res.data.data.missions)
+                console.log(res)
+                setMissions(res.data.data)
             } catch (err) {
                 console.error(err)
                 setError("Failed to fetch mercenaries.")
@@ -37,12 +38,14 @@ export const AcceptedMissions = () => {
             <h2 className="section-title">Available missions</h2>
             {error && <p className="error-msg">{error}</p>}
             {loading && <p className="loading-msg">Loading missions...</p>}
-            {missions.map((mission, index) => (
+            {missions.map((mission) => (
                 <AcceptedMissionCard
-                    key={index}
-                    id={mission._id}
+                    key={mission.id}
+                    id={mission.id}
                     name={mission.name}
-                    stats={mission.stats}
+                    strength={mission.strength}
+                    agility={mission.agility}
+                    intelligence={mission.intelligence}
                     reward={mission.reward}
                     description={mission.description}
                 />

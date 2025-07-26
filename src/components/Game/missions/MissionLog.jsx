@@ -19,7 +19,7 @@ export const MissionLog = () => {
                         }
                     });
                 console.log("Fetched mission log:", res.data.data);
-                setMissions(res.data.data.missions);
+                setMissions(res.data.data);
             } catch (err) {
                 console.error(err);
                 setError("Failed to fetch mission log.");
@@ -41,10 +41,12 @@ export const MissionLog = () => {
                 {missions.length > 0 ? (
                     missions.map((mission) => (
                         <MissionLogCard
-                            key={mission._id}
-                            id={mission._id}
+                            key={mission.id}
+                            id={mission.id}
                             name={mission.name}
-                            stats={mission.stats}
+                            strength={mission.strength}
+                            agility={mission.agility}
+                            intelligence={mission.intelligence}
                             status={mission.status}
                             reward={mission.reward}
                             description={mission.description}

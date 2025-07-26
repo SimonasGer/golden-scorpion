@@ -1,19 +1,19 @@
 export const MissionMercs = (props) => {
     return (
-        <div className={`merc-card injury-${props.injuryStatus}`}>
-            `<h3 className="merc-name">{props.firstName} {props.lastName}</h3>
+        <div className={`merc-card injury-${props.injury_status}`}>
+            <h3 className="merc-name">{props.firstName} {props.lastName}</h3>
             <div className="merc-stats">
-                <p>Strength: {props.stats.strength}</p>
-                <p>Agility: {props.stats.agility}</p>
-                <p>Intelligence: {props.stats.intelligence}</p>
+                <p>Strength: {props.strength}</p>
+                <p>Agility: {props.agility}</p>
+                <p>Intelligence: {props.intelligence}</p>
             </div>
             <p>Archetype: {props.archetype}</p>
             <p className="merc-description">Description: {props.description}</p>
             <p>Wage: {props.wage}</p>
-            <p className="injury-status">Injury Status: {props.injuryStatus}</p>
+            <p className="injury-status">Injury Status: {props.injury_status}</p>
             <label className="mission-checkbox-wrapper">
                 <input
-                    disabled={props.injuryStatus !== "healthy"}
+                    disabled={props.injury_status !== "healthy"}
                     className="mission-checkbox"
                     type="checkbox"
                     checked={props.sentMercs.includes(props.id)}
@@ -29,7 +29,7 @@ export const MissionMercs = (props) => {
                             props.setError2("");
                         }
                         props.setWage(nextWage);
-
+                        console.log("click")
                         props.setSentMercs(prev => {
                             return isChecked ? [...prev, id] : prev.filter(m => m !== id);
                         });
