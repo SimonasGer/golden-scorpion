@@ -31,9 +31,8 @@ export const HireMercs = () => {
                             Authorization: `Bearer ${token}`
                         }
                     })
-                setMercs(res.data.data.mercs)
-                setGold(res.data.data.gold)
-                console.log("Fetched data:", res.data.data);
+                setMercs(res.data.data.mercs);
+                setGold(res.data.data.gold);
             } catch (err) {
                 console.error(err)
                 setError("Failed to fetch mercenaries.")

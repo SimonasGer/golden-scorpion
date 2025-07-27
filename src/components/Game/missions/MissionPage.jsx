@@ -61,7 +61,6 @@ export const MissionPage = () => {
                         Authorization: `Bearer ${token}`
                     }
                 });
-                console.log("Fetched mercenaries:", res.data.data.mercs);
                 setMercs(res.data.data.mercs);
             } catch (err) {
                 console.error("Failed to fetch mercenaries:", err);

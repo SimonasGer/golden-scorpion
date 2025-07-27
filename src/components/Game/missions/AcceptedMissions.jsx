@@ -19,8 +19,7 @@ export const AcceptedMissions = () => {
                             Authorization: `Bearer ${token}`
                         }
                     })
-                console.log(res)
-                setMissions(res.data.data)
+                setMissions(res.data.data);
             } catch (err) {
                 console.error(err)
                 setError("Failed to fetch mercenaries.")
