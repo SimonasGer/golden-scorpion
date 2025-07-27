@@ -18,7 +18,6 @@ export const MissionLog = () => {
                             Authorization: `Bearer ${token}`
                         }
                     });
-                console.log("Fetched mission log:", res.data.data);
                 setMissions(res.data.data);
             } catch (err) {
                 console.error(err);

@@ -29,7 +29,6 @@ export const MissionMercs = (props) => {
                             props.setError2("");
                         }
                         props.setWage(nextWage);
-                        console.log("click")
                         props.setSentMercs(prev => {
                             return isChecked ? [...prev, id] : prev.filter(m => m !== id);
                         });

@@ -20,7 +20,6 @@ export const GeneratedMissions = () => {
                         }
                     })
                 setMissions(res.data.data)
-                console.log(res.data.data)
             } catch (err) {
                 console.error(err)
                 setError("Failed to fetch mercenaries.")
